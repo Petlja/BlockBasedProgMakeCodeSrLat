@@ -12,16 +12,16 @@ sys.path.append(os.getcwd())
 home_dir = os.getcwd()
 master_url = 'http://127.0.0.1:8000'
 master_app = 'runestone'
-serving_dir = "./build/MakeCode"
+serving_dir = "./_build/MakeCode"
 dest = "../../static"
 
 options(
     sphinx = Bunch(docroot=".",),
 
     build = Bunch(
-        builddir="./build/MakeCode",
+        builddir="./_build/MakeCode",
         sourcedir="_sources",
-        outdir="./build/MakeCode",
+        outdir="./_build/MakeCode",
         confdir=".",
         project_name = "MakeCode",
         template_args={'course_id': 'MakeCode',
@@ -43,8 +43,6 @@ options(
     )
 )
 
-version = pkg_resources.require("runestone")[0].version
-options.build.template_args['runestone_version'] = version
 
 # If DBURL is in the environment override dburl
 options.build.template_args['dburl'] = get_dburl(outer=locals())
